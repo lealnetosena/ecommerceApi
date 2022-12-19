@@ -1,6 +1,6 @@
-import { CategoryDto } from "../domain/request/category";
-import { CreateCategoryUseCase } from "../useCases/createCategory"; 
-import { ListCategoryUseCase } from "../useCases/listCategory";
+import { CategoryDto } from "@domain/request/category";
+import { CreateCategoryUseCase } from "@useCases/createCategory"; 
+import { ListCategoryUseCase } from "@useCases/listCategory";
 import { Request, Response } from "express";
 
 export async function create(req: Request<{},{}, Omit<CategoryDto, 'id'>>, res: Response){
