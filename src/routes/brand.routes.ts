@@ -1,9 +1,11 @@
 import { Router } from "express";
+import { create, list } from "../controller/brand";
+const brandRouter = Router()
 
-const router = Router()
+brandRouter.get('/',list)
+brandRouter.get('/:id')
+brandRouter.post('/', create)
+brandRouter.put('/')
+brandRouter.delete('/')
 
-router.get('/')
-router.get('/:id')
-router.post('/')
-router.put('/')
-router.delete('/')
+export default brandRouter

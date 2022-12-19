@@ -37,17 +37,19 @@ model Products{
   itemsCart ItemsCart[]
   itemsPurchases ItemsPurchases[]
 }
+model Brands{
+  id Int @id @default(autoincrement())
+  nameBrand String
+  products Products[]
+}
+
 model Category{
   id Int @id @default(autoincrement())
   nameCategory String
   products Products[]
 }
 
-model Brands{
-  id Int @id @default(autoincrement())
-  nameBrand String
-  products Products[]
-}
+
 //**************************************
 //Cart
 //**************************************
@@ -58,7 +60,9 @@ model Cart{
   totalValue Decimal
   itemsCart ItemsCart[]
 }
+//*
 
+//
 model ItemsCart{
   id Int @id @default(autoincrement())
   cart Cart @relation(fields: [cartId], references: [id])
@@ -89,6 +93,5 @@ model ItemsPurchases{
   productId Int
   qty Int
   untValue Decimal
-
 }
 
