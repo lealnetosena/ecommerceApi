@@ -1,9 +1,11 @@
 import { Router } from "express";
+import { create, list } from "../controller/category";
+const categoryRouter = Router()
 
-const router = Router()
+categoryRouter.get('/', list)
+categoryRouter.get('/:id')
+categoryRouter.post('/', create)
+categoryRouter.put('/')
+categoryRouter.delete('/')
 
-router.get('/')
-router.get('/:id')
-router.post('/')
-router.put('/')
-router.delete('/')
+export default categoryRouter
