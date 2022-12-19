@@ -1,0 +1,94 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+//**************************************
+//Cadastro
+//**************************************
+model User{
+  Id Int @id @default(autoincrement())
+  Name String
+  Email String @unique
+  Password String
+  Cart Cart[]
+  Purchases Purchases[]
+}
+
+model Products{
+  Id    Int @id @default(autoincrement())
+  DateCreated DateTime @default(now())
+  Name String 
+  Brand Brands @relation(fields: [BrandId], references: [Id])
+  BrandId Int
+  Description String
+  Category Category @relation(fields: [CategoryId], references: [Id])
+  CategoryId Int
+  PriceUnit Decimal
+  FlagActive Boolean
+  ItemsCart ItemsCart[]
+  ItemsPurchases ItemsPurchases[]
+}
+model Category{
+  Id Int @id @default(autoincrement())
+  NameCategory String
+  Products Products[]
+}
+
+model Brands{
+  Id Int @id @default(autoincrement())
+  NameBrand String
+  Products Products[]
+}
+//**************************************
+//Cart
+//**************************************
+model Cart{
+  Id Int @id @default(autoincrement())
+  User User @relation(fields: [UserId], references: [Id])
+  UserId Int
+  TotalValue Decimal
+  ItemsCart ItemsCart[]
+}
+
+model ItemsCart{
+  id Int @id @default(autoincrement())
+  Cart Cart @relation(fields: [CartId], references: [Id])
+  CartId Int
+  Product Products @relation(fields: [ProductId], references: [Id])
+  ProductId Int
+  Qty Int
+  UntValue Decimal
+
+}
+//**************************************
+//Purchases
+//**************************************
+model Purchases{
+  Id Int @id @default(autoincrement())
+  User User @relation(fields: [UserId], references: [Id])
+  UserId Int
+  DateCreated DateTime @default(now())
+  ItemsPurchases ItemsPurchases[]
+  TotalValue Decimal
+}
+
+model ItemsPurchases{
+  id Int @id @default(autoincrement())
+  Purchases Purchases @relation(fields: [PurchasesId], references: [Id])
+  PurchasesId Int
+  Product Products @relation(fields: [ProductId], references: [Id])
+  ProductId Int
+  Qty Int
+  UntValue Decimal
+
+}
+
