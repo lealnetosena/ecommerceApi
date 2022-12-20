@@ -1,10 +1,12 @@
 import { Router } from "express";
+import { create, list } from "@controller/product"
 
+const productRouter = Router()
 
-const router = Router()
+productRouter.get('/', list)
+productRouter.get('/:id')
+productRouter.post('/', create)
+productRouter.put('/')
+productRouter.delete('/')
 
-router.get('/')
-router.get('/:id')
-router.post('/')
-router.put('/')
-router.delete('/')
+export default productRouter
