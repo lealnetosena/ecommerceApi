@@ -1,3 +1,4 @@
+import "express-async-errors"
 import express from 'express'
 import errors from 'middlewares/errors';
 import routes from './routes';

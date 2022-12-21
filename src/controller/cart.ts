@@ -1,4 +1,3 @@
-import "express-async-errors"
 import { CartDto, ItemsCartDto } from "@domain/request/cart";
 import { UserDto } from "@domain/request/user"
 import { CreateCartUseCase } from "@useCases/createCart"; 
