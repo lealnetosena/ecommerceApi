@@ -49,8 +49,8 @@ export async function addProductCart(req: Request<{},{},Omit<ItemsCartDto,'id' |
 
 export async function list(req: Request, res: Response){
     const useCase = new ListCartUseCase()
-    const products = await useCase.handle()
-    return res.json(products)
+    const cart = await useCase.handle()
+    return res.json(cart)
 }
 
 // export async function sumCart(req: Request, res: Response){
