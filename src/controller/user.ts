@@ -1,6 +1,6 @@
 import { UserDto } from "@domain/request/user";
 import { CreateUserUseCase } from "@useCases/createUser"; 
-import { ListUserUseCase } from "@useCases/listUser";
+import { ListUserUseCase } from "@useCases/listAllUser";
 import { GetUserUseCase } from "@useCases/getUser";
 import { Request, Response } from "express";
 

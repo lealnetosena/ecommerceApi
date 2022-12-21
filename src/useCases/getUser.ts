@@ -9,7 +9,7 @@ export class GetUserUseCase{
 
         const user = await prisma.user.findFirst({
             where: {
-                id: Number(userId)
+                id:  { equals:Number(userId)}
             }
         })
         return user

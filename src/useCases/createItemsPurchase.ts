@@ -1,12 +1,12 @@
 import { NotFoundException } from "@domain/exceptions/notFound";
 import { ItemsCartDto } from "@domain/request/cart";
-import { ItemsCart, Products, PrismaClient } from "@prisma/client";
+import {  ItemsPurchases, ItemsCart, Products, PrismaClient } from "@prisma/client";
 import { GetProductUseCase } from "./getProduct";
 
 const prisma = new PrismaClient()
 const getProduct = new GetProductUseCase()
 
-export class CreateItemsCartUseCase{
+export class CreateItemsPurchaseUseCase{
     constructor(){}
 
     async handle(itemsCart: Omit<ItemsCartDto, 'id' | 'untValue'>) : Promise<ItemsCart>{

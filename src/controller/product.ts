@@ -1,6 +1,6 @@
 import { ProductDto } from "@domain/request/product";
 import { CreateProductUseCase } from "@useCases/createProduct"; 
-import { ListProductUseCase } from "@useCases/listProduct";
+import { ListProductUseCase } from "@useCases/listAllProduct";
 import { UpdateProductUseCase } from "@useCases/updateProduct";
 import { Request, Response } from "express";
 

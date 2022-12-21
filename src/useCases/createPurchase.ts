@@ -1,13 +1,13 @@
-import { PrismaClient, Cart } from "@prisma/client";
+import { PrismaClient, Purchases } from "@prisma/client";
 import { GetCartUseCase } from "./getCart";
 import { NotFoundException } from "@domain/exceptions/notFound";
 
 const prisma = new PrismaClient()
 
-export class CreateCartUseCase{
+export class CreatePurchaseUseCase{
     constructor(){}
 
-    async handle(userId: number) : Promise<Cart>{
+    async handle(userId: number) : Promise<Purchases>{
 
         
 			const ifexistCartUser = await this.ifExistCartUser(userId)

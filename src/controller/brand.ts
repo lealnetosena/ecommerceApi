@@ -1,6 +1,6 @@
 import { BrandDto } from "@domain/request/brand";
 import { CreateBrandUseCase } from "@useCases/createBrand"; 
-import { ListBrandUseCase } from "@useCases/listBrand";
+import { ListBrandUseCase } from "@useCases/listAllBrand";
 import { Request, Response } from "express";
 
 export async function create(req: Request<{},{}, Omit<BrandDto, 'id'>>, res: Response){
