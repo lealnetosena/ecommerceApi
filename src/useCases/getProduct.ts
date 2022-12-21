@@ -9,7 +9,9 @@ export class GetProductUseCase{
 
         const product = await prisma.products.findFirst({
             where: {
-                id: productId
+                id: {
+                    equals: productId
+                }
             }
         })
         return product

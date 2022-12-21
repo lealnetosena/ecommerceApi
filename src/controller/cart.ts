@@ -13,7 +13,7 @@ export async function create(req: Request, res: Response){
     return res.json(createdProduct)
 }
 
-export async function addProductCart(req: Request<{},{},Omit<ItemsCartDto,'id'>>, res: Response){
+export async function addProductCart(req: Request<{},{},Omit<ItemsCartDto,'id' | 'untValue'>>, res: Response){
     const itemsCart = req.body
 
     // const getProduct = new GetProductUseCase()
