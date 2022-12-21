@@ -9,6 +9,7 @@ export class ListProductUseCase{
 
         const products = await prisma.products.findMany({
             select:{
+                id: true,
                 name: true,
                 description: true,
                 priceUnit: true,

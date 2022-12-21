@@ -1,5 +1,5 @@
 
-export interface Purchases{
+export interface PurchasesDto{
     id: number
     userId: number
     itemsPurchases: ItemsPurchasesDto[]

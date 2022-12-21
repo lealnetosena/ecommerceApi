@@ -11,6 +11,7 @@ export interface ProductDto{
     flagActive: boolean
     itemsCart: ItemsCartDto[]
     itemsPurchases: ItemsPurchasesDto[]
+
   }
 
 
