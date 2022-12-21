@@ -20,7 +20,8 @@ export class CreateCartUseCase{
 			const createdCart = await prisma.cart.create({
 					data: {
 							userId,
-							totalValue: 0
+							totalValue: 0,
+							flagCartClose: false
 					}
 			})
 			return createdCart
@@ -31,6 +32,10 @@ export class CreateCartUseCase{
 					where: {
 							userId: {
 									equals: userId
+							}, AND:{
+								flagCartClose: {
+									equals: false
+								}
 							}
 						}
 					})

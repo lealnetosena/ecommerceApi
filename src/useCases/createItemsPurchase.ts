@@ -34,6 +34,7 @@ export class CreateItemsPurchaseUseCase{
                 })
             }
         }
-
+        console.log("Sair do for")
+        return 
     }
 }

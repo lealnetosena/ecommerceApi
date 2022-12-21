@@ -62,21 +62,28 @@ export async function list(req: Request, res: Response){
 //     return res.json(cadastredItemsCart)
 // }
 interface CloseCartParam{
-    idCart: number
+    idCart: string
 }
 export async function closeCart(req: Request<CloseCartParam>, res: Response){
     const { idCart } = req.params 
+    
+    
     const useCasegetCart = new GetCartUseCase()
-    const useCasePurchase = new CreatePurchaseUseCase()
-    const useCaseItemsPurchase = new CreateItemsPurchaseUseCase()
+    const cart = await useCasegetCart.handle(Number(idCart)) 
+    
+    if(cart.flagCartClose){
+        throw new NotFoundException("Cart has closed")
+    }
 
-    const cart = await useCasegetCart.handle(idCart) 
+    const useCasePurchase = new CreatePurchaseUseCase()
     const createdPurchase = await useCasePurchase.handle(cart)
+    
+    const useCaseItemsPurchase = new CreateItemsPurchaseUseCase()
     await useCaseItemsPurchase.handle(createdPurchase)
 
     const useCaseCloseCart = new UpdateCloseCartUseCase()
-    const closedCart = await useCaseCloseCart.handle(idCart)
+    const closedCart = await useCaseCloseCart.handle(Number(idCart))
 
-    return closedCart
+    return res.json(closedCart)
 
 }

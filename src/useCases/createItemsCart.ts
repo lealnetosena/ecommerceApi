@@ -11,6 +11,13 @@ export class CreateItemsCartUseCase{
 
     async handle(itemsCart: Omit<ItemsCartDto, 'id' | 'untValue'>) : Promise<ItemsCart>{
 
+        const ifexistCartUser = await this.ifExistCartOpen(itemsCart.cartId)
+
+        if (!ifexistCartUser){
+            throw new NotFoundException('Carrinho já fechado')
+        }
+        
+        
         const product = await getProduct.handle(itemsCart.productId)
         //const productExist = await this.checkIfProductExist(itemsCart.productId);
 
@@ -28,38 +35,22 @@ export class CreateItemsCartUseCase{
         })
         return createdItemsCart
 
-        // const soma = await prisma.itemsCart.groupBy({
-        //     by: ['qty'],
-        //     _sum: {
-        //         untValue: true
-        //     }
-        // })
-
-
     }
 
-    // async checkIfProductExist(id: number): Promise<Boolean> {
-    //     const product = await prisma.products.findFirst({
-    //         where: {
-    //             id: {
-    //                 equals: id
-    //             }
-    //         }
-    //     })
-        
-    //     return !!product
-    // }
-    // async checkIfProductExist(id: string): Promise<boolean> {
-    //     const user = await prisma.user.findFirst({
-    //       where: {
-    //         id: {
-    //           equals: id,
-    //         },
-    //       },
-    //     });
-    
-    //     // !!user
-    //     return user !== null;
-    //   }
+    async ifExistCartOpen(cartId: number) : Promise<Boolean>{
+        const cart = await prisma.cart.findFirst({
+                where: {
+                        id: {
+                                equals: cartId
+                        }, AND:{
+                            flagCartClose: {
+                                equals: false
+                            }
+                        }
+                    }
+                })
+        return !!cart
+    }
+
 
 }
