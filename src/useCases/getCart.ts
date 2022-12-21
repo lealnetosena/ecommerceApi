@@ -1,3 +1,4 @@
+import { NotFoundException } from "@domain/exceptions/notFound";
 import { PrismaClient, Cart } from "@prisma/client";
 
 const prisma = new PrismaClient()
@@ -5,7 +6,7 @@ const prisma = new PrismaClient()
 export class GetCartUseCase{
     constructor(){}
 
-    async handle(productId: number) : Promise<Cart | null>{
+    async handle(productId: number) : Promise<Cart>{
 
         const cart = await prisma.cart.findFirst({
             where: {
@@ -14,6 +15,11 @@ export class GetCartUseCase{
                 }
             }
         })
+
+        if(!cart){
+            throw new NotFoundException("Cart not created")
+        }
+        
         return cart
     }
 

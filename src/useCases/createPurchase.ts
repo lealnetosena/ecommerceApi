@@ -1,4 +1,4 @@
-import { PrismaClient, Purchases } from "@prisma/client";
+import { Cart, PrismaClient, Purchases } from "@prisma/client";
 import { GetCartUseCase } from "./getCart";
 import { NotFoundException } from "@domain/exceptions/notFound";
 
@@ -7,35 +7,16 @@ const prisma = new PrismaClient()
 export class CreatePurchaseUseCase{
     constructor(){}
 
-    async handle(userId: number) : Promise<Purchases>{
+    async handle({userId, id, totalValue}: Cart) : Promise<Purchases>{
 
-        
-			const ifexistCartUser = await this.ifExistCartUser(userId)
-			//const productExist = await this.checkIfProductExist(itemsCart.productId);
-
-			if (ifexistCartUser){
-					throw new NotFoundException('Usuário já possui um carrinho')
-			}
-
-			const createdCart = await prisma.cart.create({
+			const createdCart = await prisma.purchases.create({
 					data: {
-							userId,
-							totalValue: 0
+							userId: userId,
+							cartId: id,
+							totalValue: totalValue
 					}
 			})
 			return createdCart
     }
-
-		async ifExistCartUser(userId: number) : Promise<Boolean>{
-			const cart = await prisma.cart.findFirst({
-					where: {
-							userId: {
-									equals: userId
-							}
-						}
-					})
-			return !!cart
-		}
-
 
 }

@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
+//npx prisma generate --schema=./prisma/schema.prisma
 //**************************************
 //Cadastro
 //**************************************
@@ -59,6 +59,7 @@ model Cart{
   userId Int
   totalValue Decimal
   itemsCart ItemsCart[]
+  flagCartClose Boolean
 }
 //*
 
@@ -83,6 +84,7 @@ model Purchases{
   dateCreated DateTime @default(now())
   itemsPurchases ItemsPurchases[]
   totalValue Decimal
+  cartId Int
 }
 
 model ItemsPurchases{

@@ -4,6 +4,7 @@ export interface PurchasesDto{
     userId: number
     itemsPurchases: ItemsPurchasesDto[]
     totalValue: number
+    cartId: number
   }
 
 export interface ItemsPurchasesDto{

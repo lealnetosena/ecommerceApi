@@ -3,6 +3,7 @@ export interface CartDto{
     userId: number
     totalValue: number
     itemsCart: ItemsCartDto[]
+    flagCartClose: boolean
   }
   //*
   
