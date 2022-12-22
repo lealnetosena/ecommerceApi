@@ -26,14 +26,6 @@ export async function create(req: Request, res: Response){
 export async function addProductCart(req: Request<{},{},Omit<ItemsCartDto,'id' | 'untValue'>>, res: Response){
     const itemsCart = req.body
 
-    // const getProduct = new GetProductUseCase()
-    // const product = await getProduct.handle(itemsCart.productId)
-
-    // if (!product){
-    //     return res.json({
-    //         message: 'Product not found'
-    //     })
-    // }
 
     const useCase = new CreateItemsCartUseCase()
     const cadastredItemsCart = await useCase.handle(itemsCart)
