@@ -5,9 +5,9 @@ const prisma = new PrismaClient()
 export class UpdateCloseCartUseCase{
     constructor(){}
 
-    async handle(cartId : number) : Promise<Cart>{
+    async handle(cartId : number) : Promise<undefined>{
 
-        const cart = await prisma.cart.update({
+        await prisma.cart.update({
             data:{
                 flagCartClose: true
             },
@@ -15,7 +15,16 @@ export class UpdateCloseCartUseCase{
                 id: cartId
             }
         })
-        return cart
+        const now  = new Date()
+        await prisma.cart.update({
+            data:{
+                dateClosedCart: now
+            },
+            where: {
+                id: cartId
+            }
+        })
+        return
     }
 
 

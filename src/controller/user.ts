@@ -1,7 +1,7 @@
 import { UserDto } from "@domain/request/user";
 import { CreateUserUseCase } from "@useCases/createUser"; 
 import { ListUserUseCase } from "@useCases/listAllUser";
-import { GetUserUseCase } from "@useCases/getUser";
+import { GetUserUseCase } from "@useCases/getUserObj";
 import { Request, Response } from "express";
 
 export async function create(req: Request<{},{}, Omit<UserDto, 'id'>>, res: Response){

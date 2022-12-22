@@ -4,16 +4,17 @@ import { CreateCartUseCase } from "@useCases/createCart";
 import { CreateItemsCartUseCase } from "@useCases/createItemsCart";
 import { ListCartUseCase } from "@useCases/listAllCart"; 
 import { Request, Response } from "express";
-import { GetProductUseCase } from "@useCases/getProduct";
+import { GetProductUseCase } from "@useCases/getProductObj";
 import { PrismaClient } from "@prisma/client";
 import { NotFoundException } from "@domain/exceptions/notFound";
 import { isNull } from "util";
 import { SumCartUseCase } from "@useCases/sumCart";
 import { UpdateValueCartUseCase } from "@useCases/updateValueCart";
 import { CreatePurchaseUseCase } from "@useCases/createPurchase";
-import { GetCartUseCase } from "@useCases/getCart";
+import { GetCartUseCase } from "@useCases/getCartObj"; 
 import { CreateItemsPurchaseUseCase } from "@useCases/createItemsPurchase";
 import { UpdateCloseCartUseCase } from "@useCases/updateCloseCart";
+import { GetCartFullUseCase } from "@useCases/getCartFull";
 const prisma = new PrismaClient()
 
 export async function create(req: Request, res: Response){
@@ -74,8 +75,26 @@ export async function closeCart(req: Request<CloseCartParam>, res: Response){
     await useCaseItemsPurchase.handle(createdPurchase)
 
     const useCaseCloseCart = new UpdateCloseCartUseCase()
-    const closedCart = await useCaseCloseCart.handle(Number(idCart))
+    await useCaseCloseCart.handle(Number(idCart))
 
-    return res.json(closedCart)
+    const useCase = new GetCartFullUseCase()
+    const cartClosed = await useCase.handle(Number(idCart))
 
+
+    return res.json(cartClosed)
+
+
+
+}
+
+
+interface GetParams{
+    idCart: string
+}
+export async function getCartbyId(req: Request<GetParams>, res: Response){
+    const { idCart } = req.params
+    const useCase = new GetCartFullUseCase()
+
+    const cart = await useCase.handle(Number(idCart))
+    return res.json(cart)
 }

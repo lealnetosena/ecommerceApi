@@ -1,13 +1,15 @@
 import { Router } from "express";
-import { create, list, addProductCart, closeCart } from "@controller/cart"
+import { create, list, addProductCart, closeCart, getCartbyId } from "@controller/cart"
+import { validationsMiddleware } from "middlewares/validations";
+import { itemsCartValidations } from "validators/itemsCart";
 
 const cartRouter = Router()
 
 cartRouter.get('/', list)
-cartRouter.get('/:id')
+cartRouter.get('/:idCart', getCartbyId)
 cartRouter.post('/', create)
 cartRouter.post('/close/:idCart', closeCart)
-cartRouter.post('/addProductCart', addProductCart)
+cartRouter.post('/addProductCart',itemsCartValidations, validationsMiddleware,  addProductCart)
 cartRouter.put('/')
 cartRouter.delete('/')
 

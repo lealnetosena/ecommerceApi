@@ -1,6 +1,6 @@
 import { ProductDto } from "@domain/request/product";
 import { Products, PrismaClient } from "@prisma/client";
-import { GetBrandUseCase } from "./getBrand";
+import { GetBrandUseCase } from "./getBrandObj";
 
 const prisma = new PrismaClient()
 

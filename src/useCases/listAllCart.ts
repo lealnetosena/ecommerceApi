@@ -5,7 +5,8 @@ const prisma = new PrismaClient()
 export class ListCartUseCase{
     constructor(){}
 
-    async handle() : Promise<Cart[]>{
+    async handle() : Promise<any>{
+    //async handle() : Promise<Cart[]>{
 
         const carts = await prisma.cart.findMany({
             include: {
@@ -25,7 +26,7 @@ export class ListCartUseCase{
                 }
             }
         })
-        return carts
+        return carts[5].dateClosedCart?.toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"}) //toLocaleDateString('en-US', {timeZone: "America/Sao_Paulo"} )
     }
 
 

@@ -60,6 +60,7 @@ model Cart{
   totalValue Decimal
   itemsCart ItemsCart[]
   flagCartClose Boolean
+  dateClosedCart DateTime?
 }
 //*
 
