@@ -153,3 +153,17 @@ Exemplo:
 ```http
 http://localhost:3333/cart/close/7
 ```
+## Consultas
+
+
+http://localhost:3333/user
+http://localhost:3333/category
+http://localhost:3333/brand
+http://localhost:3333/cart
+http://localhost:3333/cart/:cartId
+http://localhost:3333/product
+
+#### Consultas a compras Realizadas
+
+http://localhost:3333/purchase
+
