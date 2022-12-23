@@ -84,3 +84,21 @@ Exemplo:
 }
 ```
 
+## Processo Compra
+#### Criar Carrinho
+
+```http
+  POST /cart
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `userId` | `number` | **Obrigatório**. A chave da sua API |
+
+
+Exemplo:
+```http
+{
+    "userId": 1,
+}
+```
