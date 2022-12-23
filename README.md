@@ -1,6 +1,18 @@
 
 ## Documentação da API
 
+## Instalação
+
+```http
+  npm install
+```
+
+## Execução
+
+```http
+  npm run dev:server
+```
+
 #### Cadastrar Usuário
 
 ```http
@@ -9,9 +21,9 @@
 
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `name` | `string` | **Obrigatório**. A chave da sua API |
-| `email` | `string` | **Obrigatório**. A chave da sua API |
-| `password` | `string` | **Obrigatório**. A chave da sua API |
+| `name` | `string` | **Obrigatório**.|
+| `email` | `string` | **Obrigatório**. |
+| `password` | `string` | **Obrigatório**. |
 
 Exemplo:
 ```http
@@ -30,7 +42,7 @@ Exemplo:
 
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `name` | `string` | **Obrigatório**. A chave da sua API |
+| `name` | `string` | **Obrigatório**.  |
 
 Exemplo:
 ```http
@@ -47,7 +59,7 @@ Exemplo:
 
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `name` | `string` | **Obrigatório**. A chave da sua API |
+| `name` | `string` | **Obrigatório**. |
 
 Exemplo:
 ```http
@@ -64,12 +76,12 @@ Exemplo:
 
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `name` | `string` | **Obrigatório**. A chave da sua API |
-| `description` | `string` | **Obrigatório**. A chave da sua API |
-| `priceUnit` | `number` | **Obrigatório**. A chave da sua API |
-| `flagActive` | `boolean` | **Obrigatório**. A chave da sua API |
-| `brandId` | `number` | **Obrigatório**. A chave da sua API |
-| `categoryId` | `number` | **Obrigatório**. A chave da sua API |
+| `name` | `string` | **Obrigatório**. |
+| `description` | `string` | **Obrigatório**.  |
+| `priceUnit` | `number` | **Obrigatório**. |
+| `flagActive` | `boolean` | **Obrigatório**. |
+| `brandId` | `number` | **Obrigatório**. |
+| `categoryId` | `number` | **Obrigatório**.  |
 
 
 Exemplo:
@@ -93,7 +105,7 @@ Exemplo:
 
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `userId` | `number` | **Obrigatório**. A chave da sua API |
+| `userId` | `number` | **Obrigatório**.|
 
 
 Exemplo:
@@ -101,4 +113,43 @@ Exemplo:
 {
     "userId": 1,
 }
+```
+
+#### Adicionar Produtos ao carrinho
+
+```http
+  POST /cart/addProductCart
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `cartId` | `number` | **Obrigatório**.|
+| `productId` | `number` | **Obrigatório**. |
+| `qty` | `number` | **Obrigatório**.  |
+
+
+Exemplo:
+```http
+{
+    "cartId": 7,
+    "productId": 2,
+    "qty": 1
+ }
+```
+
+#### Fechar o carrinho
+
+```http
+  POST /cart/close/:CartId
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `CartId` | `number` | **Obrigatório**. Route Params |
+
+
+
+Exemplo:
+```http
+http://localhost:3333/cart/close/7
 ```
