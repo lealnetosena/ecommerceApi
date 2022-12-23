@@ -26,7 +26,8 @@ export class ListCartUseCase{
                 }
             }
         })
-        return carts[5].dateClosedCart?.toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"}) //toLocaleDateString('en-US', {timeZone: "America/Sao_Paulo"} )
+        return carts
+        //return carts[5].dateClosedCart?.toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"}) //toLocaleDateString('en-US', {timeZone: "America/Sao_Paulo"} )
     }
 
 
