@@ -1,7 +1,7 @@
 import { ProductDto } from "@domain/request/product";
 import { Products, PrismaClient } from "@prisma/client";
 import { GetBrandUseCase } from "./getBrand";
-import { GetCartUseCase } from "./getCart";
+import { GetCartUseCase } from "../cart/getCart";
 import { GetCategoryUseCase } from "./getCategory";
 
 const prisma = new PrismaClient()

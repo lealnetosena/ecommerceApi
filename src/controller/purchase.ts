@@ -1,5 +1,5 @@
 
-import { ListPurchaseUseCase } from "@useCases/listAllPurchase";
+import { ListPurchaseUseCase } from "@useCases/purchase/listAllPurchase";
 import { Request, Response } from "express";
 
 export async function list(req: Request, res: Response){

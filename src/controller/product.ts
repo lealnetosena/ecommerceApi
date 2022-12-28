@@ -1,7 +1,5 @@
 import { ProductDto } from "@domain/request/product";
-import { CreateProductUseCase } from "@useCases/createProduct"; 
-import { ListProductUseCase } from "@useCases/listAllProduct";
-import { UpdateProductUseCase } from "@useCases/updateProduct";
+import { CreateProductUseCase, ListProductUseCase, UpdateProductUseCase } from "@useCases/product"; 
 import { Request, Response } from "express";
 
 export async function create(req: Request<{},{}, Omit<ProductDto, 'id'>>, res: Response){

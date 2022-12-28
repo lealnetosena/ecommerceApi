@@ -1,7 +1,7 @@
 import { NotFoundException } from "@domain/exceptions/notFound";
 import { ItemsCartDto } from "@domain/request/cart";
-import { ItemsCart, Products, PrismaClient } from "@prisma/client";
-import { GetProductUseCase } from "./getProduct";
+import { ItemsCart, PrismaClient } from "@prisma/client";
+import { GetProductUseCase } from "../product/getProduct";
 
 const prisma = new PrismaClient()
 const getProduct = new GetProductUseCase()

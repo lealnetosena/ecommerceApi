@@ -1,5 +1,4 @@
 import { PrismaClient, Cart } from "@prisma/client";
-import { GetCartUseCase } from "./getCart";
 import { NotFoundException } from "@domain/exceptions/notFound";
 
 const prisma = new PrismaClient()

@@ -1,15 +1,8 @@
 import { ItemsCartDto } from "@domain/request/cart";
-import { CreateCartUseCase } from "@useCases/createCart"; 
-import { CreateItemsCartUseCase } from "@useCases/createItemsCart";
-import { ListCartUseCase } from "@useCases/listAllCart"; 
+import { CreateCartUseCase, CreateItemsCartUseCase, ListCartUseCase, SumCartUseCase, UpdateValueCartUseCase, GetCartUseCase, UpdateCloseCartUseCase } from "@useCases/cart"; 
 import { Request, Response } from "express";
 import { NotFoundException } from "@domain/exceptions/notFound";
-import { SumCartUseCase } from "@useCases/sumCart";
-import { UpdateValueCartUseCase } from "@useCases/updateValueCart";
-import { CreatePurchaseUseCase } from "@useCases/createPurchase";
-import { GetCartUseCase } from "@useCases/getCart";
-import { CreateItemsPurchaseUseCase } from "@useCases/createItemsPurchase";
-import { UpdateCloseCartUseCase } from "@useCases/updateCloseCart";
+import { CreatePurchaseUseCase, CreateItemsPurchaseUseCase } from "@useCases/purchase";
 
 
 export async function create(req: Request, res: Response){

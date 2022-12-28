@@ -1,5 +1,5 @@
 import { NotFoundException } from "@domain/exceptions/notFound";
-import { PrismaClient, Cart } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient()
 
