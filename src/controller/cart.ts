@@ -1,20 +1,16 @@
-import { CartDto, ItemsCartDto } from "@domain/request/cart";
-import { UserDto } from "@domain/request/user"
+import { ItemsCartDto } from "@domain/request/cart";
 import { CreateCartUseCase } from "@useCases/createCart"; 
 import { CreateItemsCartUseCase } from "@useCases/createItemsCart";
 import { ListCartUseCase } from "@useCases/listAllCart"; 
 import { Request, Response } from "express";
-import { GetProductUseCase } from "@useCases/getProduct";
-import { PrismaClient } from "@prisma/client";
 import { NotFoundException } from "@domain/exceptions/notFound";
-import { isNull } from "util";
 import { SumCartUseCase } from "@useCases/sumCart";
 import { UpdateValueCartUseCase } from "@useCases/updateValueCart";
 import { CreatePurchaseUseCase } from "@useCases/createPurchase";
 import { GetCartUseCase } from "@useCases/getCart";
 import { CreateItemsPurchaseUseCase } from "@useCases/createItemsPurchase";
 import { UpdateCloseCartUseCase } from "@useCases/updateCloseCart";
-const prisma = new PrismaClient()
+
 
 export async function create(req: Request, res: Response){
     const user = req.body

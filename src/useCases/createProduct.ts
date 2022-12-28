@@ -1,6 +1,8 @@
 import { ProductDto } from "@domain/request/product";
 import { Products, PrismaClient } from "@prisma/client";
 import { GetBrandUseCase } from "./getBrand";
+import { GetCartUseCase } from "./getCart";
+import { GetCategoryUseCase } from "./getCategory";
 
 const prisma = new PrismaClient()
 
@@ -12,8 +14,8 @@ export class CreateProductUseCase{
         const useCaseGetBrand = new GetBrandUseCase()
         await useCaseGetBrand.handle(product.brandId)
         
-        const useCaseGetCategory = new GetBrandUseCase()
-        await useCaseGetBrand.handle(product.categoryId)
+        const useCaseGetCategory = new GetCategoryUseCase()
+        await useCaseGetCategory.handle(product.categoryId)
         
 
 

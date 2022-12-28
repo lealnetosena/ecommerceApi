@@ -1,4 +1,6 @@
-export class NotFoundException{
+import { IException } from "./IException";
+
+export class NotFoundException implements IException{
     statusCode: number = 404;
     message: string
 

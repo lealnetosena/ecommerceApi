@@ -17,7 +17,7 @@ export class GetCategoryUseCase{
         })
 
         if(!category){
-            throw new NotFoundException("Brand not created")
+            throw new NotFoundException("Category not found")
         }
         
         return category

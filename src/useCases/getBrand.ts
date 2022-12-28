@@ -17,7 +17,7 @@ export class GetBrandUseCase{
         })
 
         if(!brand){
-            throw new NotFoundException("Brand not created")
+            throw new NotFoundException("Brand not Found")
         }
         
         return brand

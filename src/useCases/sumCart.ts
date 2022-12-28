@@ -15,7 +15,7 @@ export class SumCartUseCase{
     })
     if (!itemsCart) {
       throw new NotFoundException("Cart not found")
-  }
+    }
     const soma = await Promise.all(
         itemsCart.map(
         async (item) => {
